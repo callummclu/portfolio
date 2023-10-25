@@ -49,21 +49,26 @@ export default function Home() {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <main className={`${styles.main} ${inter.className}`}>
-        <Modal
-          opened={showModal}
-          p={0}
-          withCloseButton={false}
-          onClose={() => setShowModal(false)}
+      <Modal
+        opened={showModal}
+        p={0}
+        withCloseButton={false}
+        onClose={() => setShowModal(false)}
+      >
+        <TextInput leftSection={<BsSearch />} />
+        <Center>
+          <Text color="gray.6" fw={500} size="sm" mt="xl" mb="md">
+            This functionality is coming soon
+          </Text>
+        </Center>
+      </Modal>
+      <div dir="ltr" className={`${styles.main} ${inter.className}`}>
+        <Flex
+          style={{ scrollSnapAlign: "start" }}
+          h="100svh"
+          align="center"
+          justify="center"
         >
-          <TextInput leftSection={<BsSearch />} />
-          <Center>
-            <Text color="gray.6" fw={500} size="sm" mt="xl" mb="md">
-              This functionality is coming soon
-            </Text>
-          </Center>
-        </Modal>
-        <Flex h="100svh" align="center" justify="center">
           <Title className={`${styles.title}`} fw={600}>
             👋 I&apos;m Callum
             <br /> A Full Stack Engineer
@@ -72,6 +77,7 @@ export default function Home() {
         <Container
           h="100svh"
           style={{
+            scrollSnapAlign: "start",
             alignItems: "center",
             justifyContent: "center",
             display: "flex",
@@ -150,7 +156,7 @@ export default function Home() {
             </Center>
           </Stack>
         </Container>
-      </main>
+      </div>
     </>
   );
 }
