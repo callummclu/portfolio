@@ -13,13 +13,19 @@ interface NavCardProps {
   icon: JSX.Element;
   title: string;
   badge?: string;
+  onClick?: () => void;
 }
 
-export const NavCard = ({ icon, title, badge }: NavCardProps) => {
+export const NavCard = ({ icon, title, badge, onClick }: NavCardProps) => {
   const theme = useMantineTheme();
 
   return (
-    <Card radius="md" bg={theme.colors.gray[1]} style={{ aspectRatio: "1/1" }}>
+    <Card
+      onClick={onClick}
+      radius="md"
+      bg={theme.colors.gray[1]}
+      style={{ aspectRatio: "1/1" }}
+    >
       {badge && (
         <Badge
           size="lg"
