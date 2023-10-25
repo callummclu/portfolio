@@ -71,7 +71,7 @@ export default function Home() {
         >
           <Title className={`${styles.title}`} fw={600}>
             👋 I&apos;m Callum
-            <br /> A Full Stack Engineer
+            <br /> A Software Engineer
           </Title>
         </Flex>
         <Container
