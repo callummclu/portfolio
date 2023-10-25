@@ -24,7 +24,7 @@ export const NavCard = ({ icon, title, badge, onClick }: NavCardProps) => {
       onClick={onClick}
       radius="md"
       bg={theme.colors.gray[1]}
-      style={{ aspectRatio: "1/1" }}
+      style={{ aspectRatio: "1/1", cursor: "pointer" }}
     >
       {badge && (
         <Badge
