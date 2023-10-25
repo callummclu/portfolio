@@ -8,6 +8,7 @@ import {
   Title,
   useMantineTheme,
 } from "@mantine/core";
+import styles from "@/styles/Home.module.css";
 
 interface NavCardProps {
   icon: JSX.Element;
@@ -24,6 +25,7 @@ export const NavCard = ({ icon, title, badge, onClick }: NavCardProps) => {
       onClick={onClick}
       radius="md"
       bg={theme.colors.gray[1]}
+      className={`${styles.card}`}
       style={{ aspectRatio: "1/1", cursor: "pointer" }}
     >
       {badge && (

@@ -5,3 +5,7 @@
 .title{
   font-size: clamp(2rem, 7vw, 5rem);
 }
+
+.card:hover{
+  filter: brightness(0.95) !important;
+}
