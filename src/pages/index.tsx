@@ -28,12 +28,12 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const isMobile = useMediaQuery(`(max-width: ${em(750)})`);
-  let isMac = false;
+  const isMac =
+    typeof window !== "undefined"
+      ? navigator.platform.toUpperCase().indexOf("MAC") >= 0
+      : false;
   const [showModal, setShowModal] = useState(false);
 
-  useEffect(() => {
-    isMac = navigator.platform.toUpperCase().indexOf("MAC") >= 0;
-  }, []);
   useHotkeys([
     ["ctrl+K", () => setShowModal(!showModal)],
     ["mod+K", () => setShowModal(!showModal)],
