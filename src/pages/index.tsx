@@ -87,11 +87,11 @@ export default function Home() {
             <TextInput
               onClick={() => setShowModal(true)}
               onFocus={(e) => e.target.blur()}
-              rightSectionWidth={!isMac ? 80 : 100}
+              rightSectionWidth={isMac ? 80 : 100}
               rightSection={
                 !isMobile && (
                   <Badge radius="sm" color="gray" variant="light">
-                    {!isMac ? "⌘ + K" : "Ctrl + K"}
+                    {isMac ? "⌘ + K" : "Ctrl + K"}
                   </Badge>
                 )
               }
