@@ -1,20 +1,14 @@
 import {
-  Anchor,
   Box,
   Button,
   Card,
-  Center,
   Container,
   Flex,
-  Highlight,
   Overlay,
-  SimpleGrid,
   Text,
-  Title,
 } from "@mantine/core";
 import { useRouter } from "next/router";
 import { Ref, useState } from "react";
-import { AiOutlineDownload } from "react-icons/ai";
 import { HiDownload, HiEye } from "react-icons/hi";
 import { Document, Page, pdfjs } from "react-pdf";
 import "react-pdf/dist/Page/AnnotationLayer.css";
@@ -24,7 +18,6 @@ interface ResumeRef {
   posRef: Ref<any>;
   goBack: () => void;
 }
-type PDFFile = string | File | null;
 
 export const Resume = ({ posRef, goBack }: ResumeRef) => {
   const [numPages, setNumPages] = useState<number>(1);
@@ -42,6 +35,7 @@ export const Resume = ({ posRef, goBack }: ResumeRef) => {
 
   return (
     <Container
+      onClick={() => setOverlay(false)}
       pos="relative"
       ref={posRef}
       h="100svh"
@@ -63,17 +57,21 @@ export const Resume = ({ posRef, goBack }: ResumeRef) => {
           style={overlay ? { outline: "4px solid #c4c4c4" } : {}}
         >
           <Box
-            style={{ filter: "drop-shadow(0px 0px 5px rgba(50, 50, 0, 0.2))" }}
+            style={{
+              filter: "drop-shadow(0px 0px 5px rgba(50, 50, 0, 0.2))",
+            }}
           >
             <Card
               pos="relative"
               style={{
-                cursor: "pointer",
+                cursor: "default",
                 clipPath: "polygon(68% 0, 100% 23.45%, 100% 100%, 0 100%, 0 0)",
               }}
               withBorder
-              onMouseOver={() => setOverlay(true)}
-              onMouseOut={() => setOverlay(false)}
+              onClick={(e) => {
+                e.stopPropagation();
+                setOverlay(true);
+              }}
             >
               <Card
                 pos="absolute"
@@ -144,8 +142,10 @@ export const Resume = ({ posRef, goBack }: ResumeRef) => {
           px={5}
           py={1}
           mt="xs"
-          onMouseOver={() => setOverlay(true)}
-          onMouseOut={() => setOverlay(false)}
+          onClick={(e) => {
+            e.stopPropagation();
+            setOverlay(true);
+          }}
           style={{ borderRadius: 5, fontSize: 18 }}
           bg={overlay ? "blue.4" : "white"}
           color={overlay ? "white" : "rgb(60,60,60)"}
