@@ -1,10 +1,12 @@
 import {
   Anchor,
+  Box,
   Button,
   Card,
   Center,
   Container,
   Flex,
+  Highlight,
   Overlay,
   SimpleGrid,
   Text,
@@ -47,9 +49,6 @@ export const Resume = ({ posRef, goBack }: ResumeRef) => {
         scrollSnapAlign: "start",
       }}
     >
-      <Title order={3} size={50} pos="absolute" top={25}>
-        Resume
-      </Title>
       <Flex
         direction="column"
         h="100%"
@@ -57,59 +56,104 @@ export const Resume = ({ posRef, goBack }: ResumeRef) => {
         align="center"
         justify="center"
       >
-        <SimpleGrid cols={{ base: 1, xs: 2 }}>
-          <Card
-            pos="relative"
-            style={{ cursor: "pointer" }}
-            withBorder
-            onMouseOver={() => setOverlay(true)}
-            onMouseOut={() => setOverlay(false)}
+        <Card
+          p="xl"
+          radius="sm"
+          bg={overlay ? "dark.3" : "transparent"}
+          style={overlay ? { outline: "4px solid #c4c4c4" } : {}}
+        >
+          <Box
+            style={{ filter: "drop-shadow(0px 0px 5px rgba(50, 50, 0, 0.2))" }}
           >
-            {}
-            {overlay && (
-              <>
-                <Button
-                  pos="absolute"
-                  top="50%"
-                  left="50%"
-                  leftSection={<HiEye size={16} />}
-                  color="teal.7"
-                  radius="md"
-                  onClick={() => push("/callum-mcluskey.pdf")}
-                  style={{ zIndex: 1000, transform: "translate(-50%,-50%)" }}
-                >
-                  View in browser
-                </Button>
-                <Overlay color="#000" backgroundOpacity={0.25} blur={2} />
-              </>
-            )}
-            <Document
-              file="./callum-mcluskey.pdf"
-              onLoadSuccess={onDocumentLoadSuccess}
+            <Card
+              pos="relative"
+              style={{
+                cursor: "pointer",
+                clipPath: "polygon(68% 0, 100% 23.45%, 100% 100%, 0 100%, 0 0)",
+              }}
+              withBorder
+              onMouseOver={() => setOverlay(true)}
+              onMouseOut={() => setOverlay(false)}
             >
-              {Array.from(new Array(numPages), (el, index) => (
-                <Page
-                  height={400}
-                  key={`page_${index + 1}`}
-                  pageNumber={index + 1}
-                />
-              ))}
-            </Document>
-          </Card>
-          <Flex align="center" justify="center" direction="column">
-            <Button
-              component="a"
-              href="/callum-mcluskey.pdf"
-              download
-              mt="xl"
-              leftSection={<HiDownload size={16} />}
-              color="teal.7"
-              radius="md"
-            >
-              Download
-            </Button>
-          </Flex>
-        </SimpleGrid>
+              <Card
+                pos="absolute"
+                w={100}
+                h={100}
+                right={0}
+                radius={0}
+                top={0}
+                shadow="md"
+                style={{ zIndex: 100 }}
+                withBorder
+              ></Card>
+              {overlay && (
+                <>
+                  <Box
+                    pos="absolute"
+                    top="50%"
+                    left="50%"
+                    display="flex"
+                    style={{
+                      zIndex: 1000,
+                      transform: "translate(-50%,-50%)",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      flexDirection: "column",
+                    }}
+                  >
+                    <Button
+                      leftSection={<HiEye size={16} />}
+                      color="teal.7"
+                      radius="md"
+                      onClick={() => push("/callum-mcluskey.pdf")}
+                    >
+                      View in browser
+                    </Button>
+                    <Button
+                      component="a"
+                      href="/callum-mcluskey.pdf"
+                      download
+                      mt="xl"
+                      leftSection={<HiDownload size={16} />}
+                      color="teal.7"
+                      radius="md"
+                    >
+                      Download
+                    </Button>
+                  </Box>
+                  <Overlay color="white" backgroundOpacity={0} blur={2} />
+                </>
+              )}
+              <Document
+                file="./callum-mcluskey.pdf"
+                onLoadSuccess={onDocumentLoadSuccess}
+              >
+                {Array.from(new Array(numPages), (el, index) => (
+                  <Page
+                    height={400}
+                    key={`page_${index + 1}`}
+                    pageNumber={index + 1}
+                  />
+                ))}
+              </Document>
+            </Card>
+          </Box>
+        </Card>
+
+        <Text
+          px={5}
+          py={1}
+          mt="xs"
+          onMouseOver={() => setOverlay(true)}
+          onMouseOut={() => setOverlay(false)}
+          style={{ borderRadius: 5, fontSize: 18 }}
+          bg={overlay ? "blue.4" : "white"}
+          color={overlay ? "white" : "rgb(60,60,60)"}
+          p={0}
+          fw={500}
+        >
+          resume.pdf
+        </Text>
       </Flex>
     </Container>
   );
