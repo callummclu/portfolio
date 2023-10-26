@@ -4,6 +4,26 @@
 
 .title{
   font-size: clamp(2rem, 7vw, 5rem);
+  position: relative;
+}
+
+
+
+@keyframes wave {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(22deg); }
+}
+
+.title::before{
+  content:"👋";
+  top:0;
+  position: absolute;
+  animation-duration: 0.3s;
+  animation-direction: alternate;
+    animation-iteration-count: 4;
+    animation-name: wave;
+    animation-timing-function:cubic-bezier(0.4, 0, 0.19, 0.94);
+
 }
 
 .card:hover{

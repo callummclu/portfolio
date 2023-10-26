@@ -1,4 +1,4 @@
-import { Flex, Title } from "@mantine/core";
+import { Box, Card, Flex, Text, Title } from "@mantine/core";
 import styles from "@/styles/Home.module.css";
 
 export const Banner = () => {
@@ -10,7 +10,7 @@ export const Banner = () => {
       justify="center"
     >
       <Title className={`${styles.title}`} fw={600}>
-        👋 I&apos;m Callum
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I&apos;m Callum
         <br /> A Full Stack Engineer
       </Title>
     </Flex>
