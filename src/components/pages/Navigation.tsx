@@ -95,7 +95,7 @@ export const Navigation = ({
           <SimpleGrid cols={{ base: 2, xs: 4, sm: 4, md: 4 }}>
             <NavCard
               onClick={scrollToAbout}
-              title="About Me"
+              title="Education"
               icon={
                 <BsPerson color="rgb(60,60,60)" size={isMobile ? 32 : 54} />
               }

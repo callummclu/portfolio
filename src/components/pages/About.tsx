@@ -1,4 +1,4 @@
-import { Anchor, Container, Flex, Text, Title } from "@mantine/core";
+import { Anchor, Container, Flex, Image, Text, Title } from "@mantine/core";
 import { Ref } from "react";
 
 interface AboutProps {
@@ -22,9 +22,10 @@ export const About = ({ posRef, goBack }: AboutProps) => {
         align="center"
         justify="center"
       >
-        <Title order={3}>About Me</Title>
-        <Text>Coming Soon</Text>
-        <Anchor onClick={goBack}>back</Anchor>
+        <Image w={200} mb={20} src="/University-of-Glasgow.png" />
+        <Title order={3}>BSc Honours in Computing Science</Title>
+        <Text>with Honours of the Second Class (Division i)</Text>
+        <Text>with Specialism in Human Computer Interaction</Text>
       </Flex>
     </Container>
   );
