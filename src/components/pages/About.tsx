@@ -10,7 +10,7 @@ export const About = ({ posRef, goBack }: AboutProps) => {
   return (
     <Container
       ref={posRef}
-      h="100svh"
+      h="100vh"
       style={{
         scrollSnapAlign: "start",
       }}

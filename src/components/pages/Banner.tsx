@@ -5,7 +5,7 @@ export const Banner = () => {
   return (
     <Flex
       style={{ scrollSnapAlign: "start" }}
-      h="100svh"
+      h="100vh"
       align="center"
       justify="center"
     >

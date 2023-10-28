@@ -52,7 +52,7 @@ export const Experience = ({ posRef, goBack }: ExperienceProps) => {
   return (
     <Container
       ref={posRef}
-      h="100svh"
+      h="100vh"
       style={{
         scrollSnapAlign: "start",
       }}

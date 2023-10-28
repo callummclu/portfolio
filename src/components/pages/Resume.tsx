@@ -38,7 +38,7 @@ export const Resume = ({ posRef, goBack }: ResumeRef) => {
       onClick={() => setOverlay(false)}
       pos="relative"
       ref={posRef}
-      h="100svh"
+      h="100vh"
       style={{
         scrollSnapAlign: "start",
       }}
