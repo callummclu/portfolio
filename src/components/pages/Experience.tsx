@@ -35,18 +35,18 @@ export const Experience = ({ posRef, goBack }: ExperienceProps) => {
       title: "Software Engineer",
       period: {
         from: "Jun 22",
-        to: "Feb 24",
+        to:"Present",//to: "Feb 24",
       },
     },
-    {
-      logo: "/jpmorgan-logo.png",
-      name: "JP Morgan Chase",
-      title: "Software Engineer",
-      period: {
-        from: "Feb 24",
-        to: "Present",
-      },
-    },
+//    {
+//      logo: "/jpmorgan-logo.png",
+//      name: "JP Morgan Chase",
+//      title: "Software Engineer",
+//      period: {
+//        from: "Feb 24",
+//        to: "Present",
+//      },
+//    },
   ];
 
   return (
