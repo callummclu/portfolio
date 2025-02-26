@@ -17,15 +17,15 @@ import { useViewportSize } from "@mantine/hooks";
 
 export const Banner = () => {
   const { width } = useViewportSize();
+
   return (
     <Flex
-      h={width > 783 ? "100vh" : "auto"}
+      h={"100vh"}
       align="center"
       justify="center"
       p="xl"
       wrap="wrap"
-      gap={75}
-      mt={width > 783 ? 0 : "xl"}
+      gap={width > 783 ? 75 : 0}
     >
       <Stack gap="0" miw={300} maw={400}>
         <Text className={styles.bannerheadtext} fw="700" size="sm" c="gray">

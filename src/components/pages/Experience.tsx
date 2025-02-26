@@ -12,10 +12,13 @@ import {
   Timeline,
   TimelineItem,
 } from "@mantine/core";
-import { Ref, useState } from "react";
+import { useViewportSize } from "@mantine/hooks";
+import { Ref, useEffect, useState } from "react";
 import { BiCollapseVertical, BiExpandVertical } from "react-icons/bi";
 
 export const Experience = () => {
+  const { width } = useViewportSize();
+
   const experience = [
     {
       logo: "/evata-logo.png",
@@ -55,9 +58,17 @@ export const Experience = () => {
     },
   ];
 
-  const [visibleExperience, setVisibleExperience] = useState([
-    experience.at(-1),
-  ]);
+  const [visibleExperience, setVisibleExperience] = useState(
+    width > 783 ? [experience.at(-1)] : experience
+  );
+
+  useEffect(() => {
+    if (width <= 783) {
+      setVisibleExperience(experience);
+    } else {
+      setVisibleExperience([experience.at(0)]);
+    }
+  }, [width]);
 
   return (
     <Flex align="center" justify="center" gap="xs">
@@ -88,22 +99,24 @@ export const Experience = () => {
           </TimelineItem>
         ))}
       </Timeline>
-      <ActionIcon
-        onClick={() => {
-          if (visibleExperience.length == 1) {
-            setVisibleExperience(experience);
-          } else {
-            setVisibleExperience([experience.at(-1)]);
-          }
-        }}
-        variant="subtle"
-      >
-        {visibleExperience.length == 1 ? (
-          <BiExpandVertical />
-        ) : (
-          <BiCollapseVertical />
-        )}
-      </ActionIcon>
+      {width > 783 && (
+        <ActionIcon
+          onClick={() => {
+            if (visibleExperience.length == 1) {
+              setVisibleExperience(experience);
+            } else {
+              setVisibleExperience([experience.at(-1)]);
+            }
+          }}
+          variant="subtle"
+        >
+          {visibleExperience.length == 1 ? (
+            <BiExpandVertical />
+          ) : (
+            <BiCollapseVertical />
+          )}
+        </ActionIcon>
+      )}
     </Flex>
   );
 };
