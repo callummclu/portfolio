@@ -66,7 +66,7 @@ export const Experience = () => {
     if (width <= 783) {
       setVisibleExperience(experience);
     } else {
-      setVisibleExperience([experience.at(0)]);
+      setVisibleExperience([experience.at(-1)]);
     }
   }, [width]);
 
