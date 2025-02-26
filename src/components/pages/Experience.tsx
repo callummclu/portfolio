@@ -59,14 +59,14 @@ export const Experience = () => {
   ];
 
   const [visibleExperience, setVisibleExperience] = useState(
-    width > 783 ? [experience.at(-1)] : experience
+    width > 744 ? [experience.at(-1)] : experience
   );
 
   useEffect(() => {
-    if (width <= 783) {
-      setVisibleExperience(experience);
-    } else {
+    if (width > 744) {
       setVisibleExperience([experience.at(-1)]);
+    } else {
+      setVisibleExperience(experience);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [width]);
@@ -106,24 +106,26 @@ export const Experience = () => {
           </TimelineItem>
         ))}
       </Timeline>
-      {width > 783 && (
-        <ActionIcon
-          onClick={() => {
-            if (visibleExperience.length == 1) {
-              setVisibleExperience(experience);
-            } else {
-              setVisibleExperience([experience.at(-1)]);
-            }
-          }}
-          variant="subtle"
-        >
-          {visibleExperience.length == 1 ? (
-            <BiExpandVertical />
-          ) : (
-            <BiCollapseVertical />
-          )}
-        </ActionIcon>
-      )}
+
+      <ActionIcon
+        style={{
+          opacity: width > 744 ? 1 : 0,
+        }}
+        onClick={() => {
+          if (visibleExperience.length == 1) {
+            setVisibleExperience(experience);
+          } else {
+            setVisibleExperience([experience.at(-1)]);
+          }
+        }}
+        variant="subtle"
+      >
+        {visibleExperience.length == 1 ? (
+          <BiExpandVertical />
+        ) : (
+          <BiCollapseVertical />
+        )}
+      </ActionIcon>
     </Flex>
   );
 };

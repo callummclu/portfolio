@@ -25,7 +25,7 @@ export const Banner = () => {
       justify="center"
       p="xl"
       wrap="wrap"
-      gap={width > 783 ? 75 : 0}
+      gap={width > 669 ? 75 : 0}
     >
       <Stack gap="0" miw={300} maw={400}>
         <Text className={styles.bannerheadtext} fw="700" size="sm" c="gray">
