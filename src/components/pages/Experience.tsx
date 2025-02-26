@@ -68,7 +68,8 @@ export const Experience = () => {
     } else {
       setVisibleExperience([experience.at(-1)]);
     }
-  }, [experience, width]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [width]);
 
   return (
     <Flex align="center" justify="center" gap="xs">
