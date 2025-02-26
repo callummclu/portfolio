@@ -68,33 +68,39 @@ export const Experience = () => {
     } else {
       setVisibleExperience([experience.at(-1)]);
     }
-  }, [width]);
+  }, [experience, width]);
 
   return (
     <Flex align="center" justify="center" gap="xs">
       <Timeline bulletSize={20} lineWidth={2}>
         {visibleExperience.map((job, index) => (
           <TimelineItem
-            key={job.name}
-            title={job.name}
+            key={job?.name}
+            title={job?.name}
             bullet={
               <Avatar
                 size="sm"
-                src={job.logo}
+                src={job?.logo}
                 radius="xl"
-                alt={`${job.name} logo`}
+                alt={`${job?.name} logo`}
               />
             }
           >
             <Text size="sm" p={0} m={0}>
-              {job.title}
+              {job?.title}
             </Text>
             <Badge
-              variant={index == experience.length - 1 ? "outline" : "light"}
+              variant={
+                visibleExperience.length == 1
+                  ? "outline"
+                  : index == experience.length - 1
+                  ? "outline"
+                  : "light"
+              }
               size="sm"
               color="gray"
             >
-              {job.period.from} - {job.period.to}
+              {job?.period.from} - {job?.period.to}
             </Badge>{" "}
           </TimelineItem>
         ))}
