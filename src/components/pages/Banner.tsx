@@ -20,10 +20,10 @@ export const Banner = () => {
 
   return (
     <Flex
-      h={"100vh"}
+      mih={"100vh"}
       align="center"
       justify="center"
-      p="xl"
+      px="xl"
       wrap="wrap"
       gap={width > 669 ? 75 : 0}
     >
