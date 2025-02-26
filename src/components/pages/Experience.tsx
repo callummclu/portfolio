@@ -1,29 +1,26 @@
 import {
-  Anchor,
+  ActionIcon,
+  Avatar,
   Badge,
-  Box,
-  Card,
+  Button,
   Container,
+  Divider,
   Flex,
   Image,
-  SimpleGrid,
   Stack,
   Text,
-  Title,
+  Timeline,
+  TimelineItem,
 } from "@mantine/core";
-import { Ref } from "react";
+import { Ref, useState } from "react";
+import { BiCollapseVertical, BiExpandVertical } from "react-icons/bi";
 
-interface ExperienceProps {
-  posRef: Ref<any>;
-  goBack: () => void;
-}
-
-export const Experience = ({ posRef, goBack }: ExperienceProps) => {
+export const Experience = () => {
   const experience = [
     {
       logo: "/evata-logo.png",
       name: "Evata",
-      title: "Intern Full Stack Engineer",
+      title: "Full Stack Engineer",
       period: {
         from: "Mar 22",
         to: "Jun 22",
@@ -38,52 +35,75 @@ export const Experience = ({ posRef, goBack }: ExperienceProps) => {
         to: "Feb 24",
       },
     },
-   {
-     logo: "/jpmorgan-logo.png",
-     name: "JP Morgan Chase",
-     title: "Software Engineer",
-     period: {
-       from: "Feb 24",
-       to: "Present",
-     },
-   },
+    {
+      logo: "/jpmorgan-logo.png",
+      name: "JPMorganChase",
+      title: "Software Engineer",
+      period: {
+        from: "Feb 24",
+        to: "Mar 25",
+      },
+    },
+    {
+      logo: "/skyscanner-logo.png",
+      name: "Skyscanner",
+      title: "Software Engineer 2",
+      period: {
+        from: "Mar 25",
+        to: "Present",
+      },
+    },
   ];
 
+  const [visibleExperience, setVisibleExperience] = useState([
+    experience.at(-1),
+  ]);
+
   return (
-    <Container
-      ref={posRef}
-      h="100vh"
-      style={{
-        scrollSnapAlign: "start",
-      }}
-    >
-      <Flex
-        direction="column"
-        h="100%"
-        w="100%"
-        align="center"
-        justify="center"
+    <Flex align="center" justify="center" gap="xs">
+      <Timeline bulletSize={20} lineWidth={2}>
+        {visibleExperience.map((job, index) => (
+          <TimelineItem
+            key={job.name}
+            title={job.name}
+            bullet={
+              <Avatar
+                size="sm"
+                src={job.logo}
+                radius="xl"
+                alt={`${job.name} logo`}
+              />
+            }
+          >
+            <Text size="sm" p={0} m={0}>
+              {job.title}
+            </Text>
+            <Badge
+              variant={index == experience.length - 1 ? "outline" : "light"}
+              size="sm"
+              color="gray"
+            >
+              {job.period.from} - {job.period.to}
+            </Badge>{" "}
+          </TimelineItem>
+        ))}
+      </Timeline>
+      <ActionIcon
+        onClick={() => {
+          if (visibleExperience.length == 1) {
+            setVisibleExperience(experience);
+          } else {
+            setVisibleExperience([experience.at(-1)]);
+          }
+        }}
+        variant="subtle"
       >
-        <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing={"7.5vw"}>
-          {experience.map((job) => (
-            <Stack key={job.title + job.name} mb={50} align="center" gap={0}>
-              <Flex justify="center" align="center" h={70}>
-                <Image
-                  mb={20}
-                  w={150}
-                  src={job.logo}
-                  alt={job.name + " logo"}
-                />
-              </Flex>
-              <Title order={3}>{job.name}</Title>
-              <Text>{job.title}</Text>
-              <Badge variant="light" color="teal" m="md">
-                {job.period.from} - {job.period.to}
-              </Badge>
-            </Stack>
-          ))}
-        </SimpleGrid>
-      </Flex>
-    </Container>
+        {visibleExperience.length == 1 ? (
+          <BiExpandVertical />
+        ) : (
+          <BiCollapseVertical />
+        )}
+      </ActionIcon>
+    </Flex>
   );
 };
