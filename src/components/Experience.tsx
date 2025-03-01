@@ -1,62 +1,19 @@
+import { experience } from "@/constants/experience";
 import {
   ActionIcon,
   Avatar,
   Badge,
-  Button,
-  Container,
-  Divider,
   Flex,
-  Image,
-  Stack,
   Text,
   Timeline,
   TimelineItem,
 } from "@mantine/core";
 import { useViewportSize } from "@mantine/hooks";
-import { Ref, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { BiCollapseVertical, BiExpandVertical } from "react-icons/bi";
 
 export const Experience = () => {
   const { width } = useViewportSize();
-
-  const experience = [
-    {
-      logo: "/evata-logo.png",
-      name: "Evata",
-      title: "Full Stack Engineer",
-      period: {
-        from: "Mar 22",
-        to: "Jun 22",
-      },
-    },
-    {
-      logo: "/guitarguitar-logo.png",
-      name: "guitarguitar",
-      title: "Software Engineer",
-      period: {
-        from: "Jun 22",
-        to: "Feb 24",
-      },
-    },
-    {
-      logo: "/jpmorgan-logo.png",
-      name: "JPMorganChase",
-      title: "Software Engineer",
-      period: {
-        from: "Feb 24",
-        to: "Mar 25",
-      },
-    },
-    {
-      logo: "/skyscanner-logo.png",
-      name: "Skyscanner",
-      title: "Software Engineer 2",
-      period: {
-        from: "Mar 25",
-        to: "Present",
-      },
-    },
-  ];
 
   const [visibleExperience, setVisibleExperience] = useState(
     width > 744 ? [experience.at(-1)] : experience
