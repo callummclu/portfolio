@@ -2,6 +2,7 @@ import { Text, Title, Stack, Group, Badge, CopyButton } from "@mantine/core";
 import styles from "@/styles/Home.module.css";
 import Link from "next/link";
 import { BiCopy, BiFile, BiLink } from "react-icons/bi";
+import { timeSinceStarted } from "@/helpers/yearsSinceStartedHelper";
 
 export const Banner = () => (
   <Stack gap="0" miw={300} maw={400}>
@@ -12,8 +13,8 @@ export const Banner = () => (
       Callum McLuskey
     </Title>
     <Text className={`${styles.subtext}`}>
-      3 years of experience in software development in areas such as e-commerce
-      & financial tech
+      {timeSinceStarted()} years of experience in software development in areas
+      such as e-commerce & financial tech
     </Text>
     <Group mt="sm">
       <Link href="https://www.github.com/callummclu/">
