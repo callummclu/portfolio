@@ -9,7 +9,7 @@
 }
 
 .title{
-  font-size: clamp(2.25rem, 7vw, 3rem);
+  font-size: clamp(2.25rem, 7vw, 2.75rem);
   position: relative;
   max-width: 400px;
 }

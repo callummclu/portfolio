@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { Inter } from "next/font/google";
+import { PT_Sans } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 
 import { Banner } from "@/components/Banner";
@@ -7,7 +7,7 @@ import { useViewportSize } from "@mantine/hooks";
 import { Flex } from "@mantine/core";
 import { Experience } from "@/components/Experience";
 
-const inter = Inter({ subsets: ["latin"] });
+const ptSans = PT_Sans({ weight: "400", subsets: ["latin"] });
 
 export default function Home() {
   const { width } = useViewportSize();
@@ -22,7 +22,7 @@ export default function Home() {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <div dir="ltr" className={`${styles.main} ${inter.className}`}>
+      <div dir="ltr" className={`${styles.main} ${ptSans.className}`}>
         <Flex
           mih={"100vh"}
           align="center"

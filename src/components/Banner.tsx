@@ -2,14 +2,24 @@ import { Text, Title, Stack, Group, Badge, CopyButton } from "@mantine/core";
 import styles from "@/styles/Home.module.css";
 import Link from "next/link";
 import { BiCopy, BiFile, BiLink } from "react-icons/bi";
-import { timeSinceStarted } from "@/helpers/yearsSinceStartedHelper";
+import { timeSinceStarted } from "@/helpers/dateStringHelper";
+import { PT_Serif, PT_Mono } from "next/font/google";
+
+const ptSerif = PT_Serif({ weight: "700", subsets: ["latin"] });
+
+const ptMono = PT_Mono({ weight: "400", subsets: ["latin"] });
 
 export const Banner = () => (
   <Stack gap="0" miw={300} maw={400}>
-    <Text className={styles.bannerheadtext} fw="700" size="sm" c="gray">
+    <Text
+      className={`${styles.bannerheadtext} ${ptMono.className}`}
+      fw="700"
+      size="sm"
+      c="gray"
+    >
       SOFTWARE ENGINEER
     </Text>
-    <Title className={`${styles.title}`} fw={600}>
+    <Title className={`${styles.title} ${ptSerif.className}`}>
       Callum McLuskey
     </Title>
     <Text className={`${styles.subtext}`}>
